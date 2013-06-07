@@ -10,3 +10,10 @@ Template.meteorMessage.rendered = function () {
     Meteor.messages.update(message._id, {$set: {seen: true}});
   });
 };
+
+Template.meteorMessage.events({
+  "click .close": function (e, tmpl) {
+    e.preventDefault();
+    Meteor.messages.remove(tmpl.data._id);
+  }
+});
