@@ -77,12 +77,26 @@ testAsyncMulti('flash-messages - Remove seen messages', [
 
     OnscreenDiv(Spark.render(Template.meteorMessages));
     Meteor.setTimeout(expect(function(){
-          test.equal(Meteor.messages.find({}).count(), 1);
-          test.equal(Meteor.messages.find({seen: false}).count(), 0, 
-            'Messages should be marqued as seen (seen: true)');
-          Meteor.Messages.clear();
-          test.equal(Meteor.messages.find({seen: true}).count(), 0, 
-            'Messages seen should be cleared');
-        }), 500);
+      test.equal(Meteor.messages.find({}).count(), 1);
+      test.equal(Meteor.messages.find({seen: false}).count(), 0, 
+        'Messages should be marqued as seen (seen: true)');
+      Meteor.Messages.clear();
+      test.equal(Meteor.messages.find({seen: true}).count(), 0, 
+        'Messages seen should be cleared');
+    }), 500);
+  }
+]);
+
+testAsyncMulti('flash-messages - Remove when click close button', [
+  function(test, expect) {
+    Meteor.messages.remove({});
+    Meteor.Messages.sendError('message');
+
+    OnscreenDiv(Spark.render(Template.meteorMessages));
+    Meteor.setTimeout(expect(function(){
+      test.equal(Meteor.messages.find({}).count(), 1);
+      clickElement(document.getElementsByClassName('close')[0]);
+      test.equal(Meteor.messages.find({}).count(), 0);
+    }), 500);
   }
 ]);
