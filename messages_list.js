@@ -3,6 +3,9 @@ Template.meteorMessage.rendered = function () {
   Meteor.defer(function() {
     Meteor.messages.update(message._id, {$set: {seen: true}});
   });
+  $(this.find('.alert')).delay(5000).fadeOut(400, function(){
+    Meteor.messages.remove({_id: message._id});
+  });
 };
 
 Template.meteorMessages.helpers({
