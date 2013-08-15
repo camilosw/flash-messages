@@ -7,22 +7,26 @@ This package integrate well with [Bootstrap Alerts](http://twitter.github.io/boo
 
 You can see a [demo](http://flash-messages-demo.meteor.com/) and their [source code](https://github.com/camilosw/flash-messages-demo).
 
+##Note
+
+The syntax has changed on version 0.2.0
+
 ##Usage
 
 Include the template somewhere in your index.html file:
 ```javascript
-  {{> meteorMessages}}
+  {{> flashMessages}}
 ```
 And then send messages:
 ```javascript
-  Meteor.Messages.sendAlert(MESSAGE);
-  Meteor.Messages.sendError(MESSAGE);
-  Meteor.Messages.sendSuccess(MESSAGE);
-  Meteor.Messages.sendInfo(MESSAGE);
+  FlashMessages.sendAlert(MESSAGE);
+  FlashMessages.sendError(MESSAGE);
+  FlashMessages.sendSuccess(MESSAGE);
+  FlashMessages.sendInfo(MESSAGE);
 ```
 And to clear messages:
 ```javascript
-  Meteor.Messages.clear();
+  FlashMessages.clear();
 ```
 
 Only the seen messages will be cleared.
