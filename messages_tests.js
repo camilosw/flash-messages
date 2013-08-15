@@ -1,11 +1,15 @@
 // Helpers
 
 var messagesCount = function() {
-  return Meteor.messages.find({}).count();
+  return flashMessages.find({}).count();
 }
 
 var findOneMessage = function() {
-  return Meteor.messages.findOne({});
+  return flashMessages.findOne({});
+}
+
+var cleanMessages = function() {
+  flashMessages.remove({});
 }
 
 // Tests
@@ -15,9 +19,9 @@ Tinytest.add('flash-messages - Messages Collection works', function(test) {
 });
 
 Tinytest.add('flash-messages - Add alert message', function(test) {
-  Meteor.messages.remove({});
+  cleanMessages();
   var message = 'This is an alert message';
-  Meteor.Messages.sendAlert(message);
+  FlashMessages.sendAlert(message);
 
   test.equal(messagesCount(), 1);
 
@@ -30,9 +34,9 @@ Tinytest.add('flash-messages - Add alert message', function(test) {
 });
 
 Tinytest.add('flash-messages - Add error message', function(test) {
-  Meteor.messages.remove({});
+  cleanMessages();
   var message = 'This is an error message';
-  Meteor.Messages.sendError(message);
+  FlashMessages.sendError(message);
 
   test.equal(messagesCount(), 1);
 
@@ -46,9 +50,9 @@ Tinytest.add('flash-messages - Add error message', function(test) {
 });
 
 Tinytest.add('flash-messages - Add success message', function(test) {
-  Meteor.messages.remove({});
+  cleanMessages();
   var message = 'This is a success message';
-  Meteor.Messages.sendSuccess(message);
+  FlashMessages.sendSuccess(message);
 
   test.equal(messagesCount(), 1);
 
@@ -61,9 +65,9 @@ Tinytest.add('flash-messages - Add success message', function(test) {
 });
 
 Tinytest.add('flash-messages - Add info message', function(test) {
-  Meteor.messages.remove({});
+  cleanMessages();
   var message = 'This is an info message';
-  Meteor.Messages.sendInfo(message);
+  FlashMessages.sendInfo(message);
 
   test.equal(messagesCount(), 1);
 
@@ -76,24 +80,24 @@ Tinytest.add('flash-messages - Add info message', function(test) {
 });
 
 Tinytest.add("flash-messages - Don't remove unseen messages", function(test) {
-  Meteor.messages.remove({});
-  Meteor.Messages.sendError('message');
-  Meteor.Messages.clear();
+  cleanMessages();
+  FlashMessages.sendError('message');
+  FlashMessages.clear();
   test.equal(messagesCount(), 1);
 });
 
 testAsyncMulti('flash-messages - Remove seen messages', [
   function(test, expect) {
-    Meteor.messages.remove({});
-    Meteor.Messages.sendError('message');
+    cleanMessages();
+    FlashMessages.sendError('message');
 
-    OnscreenDiv(Spark.render(Template.meteorMessages));
+    OnscreenDiv(Spark.render(Template.flashMessages));
     Meteor.setTimeout(expect(function(){
       test.equal(messagesCount(), 1);
-      test.equal(Meteor.messages.find({seen: false}).count(), 0, 
+      test.equal(flashMessages.find({seen: false}).count(), 0, 
         'Messages should be marqued as seen (seen: true)');
-      Meteor.Messages.clear();
-      test.equal(Meteor.messages.find({seen: true}).count(), 0, 
+      FlashMessages.clear();
+      test.equal(flashMessages.find({seen: true}).count(), 0, 
         'Messages seen should be cleared');
     }), 500);
   }
@@ -101,10 +105,10 @@ testAsyncMulti('flash-messages - Remove seen messages', [
 
 testAsyncMulti('flash-messages - Remove when click close button', [
   function(test, expect) {
-    Meteor.messages.remove({});
-    Meteor.Messages.sendError('message');
+    cleanMessages();
+    FlashMessages.sendError('message');
 
-    OnscreenDiv(Spark.render(Template.meteorMessages));
+    OnscreenDiv(Spark.render(Template.flashMessages));
     Meteor.setTimeout(expect(function(){
       test.equal(messagesCount(), 1);
       clickElement(document.getElementsByClassName('close')[0]);
@@ -115,10 +119,10 @@ testAsyncMulti('flash-messages - Remove when click close button', [
 
 testAsyncMulti('flash-messages - Remove after 5 seconds', [
   function(test, expect) {
-    Meteor.messages.remove({});
-    Meteor.Messages.sendError('message');
+    cleanMessages();
+    FlashMessages.sendError('message');
 
-    OnscreenDiv(Spark.render(Template.meteorMessages));
+    OnscreenDiv(Spark.render(Template.flashMessages));
     Meteor.setTimeout(expect(function(){
       test.equal(messagesCount(), 1);
     }), 500);

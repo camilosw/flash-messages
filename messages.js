@@ -4,22 +4,22 @@
  *   style: String,
  *   seen: Boolean }
  */
-Meteor.messages = new Meteor.Collection(null);
+flashMessages = new Meteor.Collection(null);
 
-Meteor.Messages = {
+FlashMessages = {
   sendAlert: function(message) {
-    Meteor.messages.insert({message: message, style: '', seen: false});
+    flashMessages.insert({message: message, style: '', seen: false});
   },
   sendError: function(message) {
-    Meteor.messages.insert({message: message, style: 'alert-error', seen: false});
+    flashMessages.insert({message: message, style: 'alert-error', seen: false});
   },
   sendSuccess: function(message) {
-    Meteor.messages.insert({message: message, style: 'alert-success', seen: false});
+    flashMessages.insert({message: message, style: 'alert-success', seen: false});
   },
   sendInfo: function(message) {
-    Meteor.messages.insert({message: message, style: 'alert-info', seen: false});
+    flashMessages.insert({message: message, style: 'alert-info', seen: false});
   },
   clear: function() {
-    Meteor.messages.remove({seen: true});
+    flashMessages.remove({seen: true});
   }
 }

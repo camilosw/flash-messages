@@ -1,10 +1,10 @@
-<template name="meteorMessages">
+<template name="flashMessages">
   {{#each messages}} 
-    {{> meteorMessage}}
+    {{> flashMessage}}
   {{/each}}
 </template>
 
-<template name="meteorMessage">
+<template name="flashMessage">
   <div class="alert {{style}}">
     <button type="button" class="close">&times;</button>
     {{message}}
