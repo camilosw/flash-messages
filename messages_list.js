@@ -3,9 +3,11 @@ Template.flashMessage.rendered = function () {
   Meteor.defer(function() {
     flashMessages.update(message._id, {$set: {seen: true}});
   });
-  $(this.find('.alert')).delay(5000).fadeOut(400, function(){
-    flashMessages.remove({_id: message._id});
-  });
+  if (message.options && message.options.autoHide) {
+    $(this.find('.alert')).delay(message.options.hideDelay).fadeOut(400, function(){
+      flashMessages.remove({_id: message._id});
+    });    
+  }
 };
 
 Template.flashMessages.helpers({
