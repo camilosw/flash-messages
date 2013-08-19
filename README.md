@@ -24,9 +24,26 @@ And then send messages:
   FlashMessages.sendSuccess(MESSAGE);
   FlashMessages.sendInfo(MESSAGE);
 ```
-And to clear messages:
+To clear messages:
 ```javascript
   FlashMessages.clear();
 ```
 
 Only the seen messages will be cleared.
+
+##Configure
+
+You can configure globally the way the messages behave with FlashMessages.configure:
+```javascript
+  FlashMessages.configure({
+    autoHide: true,
+    hideDelay: 5000
+  });
+```
+You can also set individual options on messages. This will override global configuration:
+```javascript
+  FlashMessages.sendAlert(MESSAGE, { autoHide: false });
+  FlashMessages.sendError(MESSAGE, { hideDelay: 2000 });
+  FlashMessages.sendSuccess(MESSAGE, { autoHide: true, hideDelay: 8000 });
+  FlashMessages.sendInfo(MESSAGE);
+```
