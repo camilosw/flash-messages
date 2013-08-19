@@ -131,3 +131,87 @@ testAsyncMulti('flash-messages - Remove after 5 seconds', [
     }), 6000);
   }
 ]);
+
+testAsyncMulti("flash-messages - Don't remove if autoHide is false", [
+  function(test, expect) {
+    cleanMessages();
+    FlashMessages.sendError('message', { autoHide: false });
+
+    OnscreenDiv(Spark.render(Template.flashMessages));
+    Meteor.setTimeout(expect(function(){
+      test.equal(messagesCount(), 1);
+    }), 500);
+    Meteor.setTimeout(expect(function(){
+      test.equal(messagesCount(), 1);
+    }), 6000);
+  }
+]);
+
+testAsyncMulti("flash-messages - Don't remove with global config", [
+  function(test, expect) {
+    cleanMessages();
+    var options = _.clone(FlashMessages.options);
+    FlashMessages.configure({ autoHide: false });
+    FlashMessages.sendError('message');
+    FlashMessages.options = options
+
+    OnscreenDiv(Spark.render(Template.flashMessages));
+    Meteor.setTimeout(expect(function(){
+      test.equal(messagesCount(), 1);
+    }), 500);
+    Meteor.setTimeout(expect(function(){
+      test.equal(messagesCount(), 1);
+    }), 6000);
+  }
+]);
+
+testAsyncMulti('flash-messages - Set auto hide delay to 1 second', [
+  function(test, expect) {
+    cleanMessages();
+    FlashMessages.sendError('message', { hideDelay: 1000 });
+
+    OnscreenDiv(Spark.render(Template.flashMessages));
+    Meteor.setTimeout(expect(function(){
+      test.equal(messagesCount(), 1);
+    }), 500);
+    Meteor.setTimeout(expect(function(){
+      test.equal(messagesCount(), 0);
+    }), 2000);
+  }
+]);
+
+testAsyncMulti('flash-messages - Set auto hide delay to 1 second with global config', [
+  function(test, expect) {
+    cleanMessages();
+    var options = _.clone(FlashMessages.options);
+    FlashMessages.configure({ hideDelay: 1000 });
+    FlashMessages.sendError('message');
+    FlashMessages.options = options
+
+    OnscreenDiv(Spark.render(Template.flashMessages));
+    Meteor.setTimeout(expect(function(){
+      test.equal(messagesCount(), 1);
+    }), 500);
+    Meteor.setTimeout(expect(function(){
+      test.equal(messagesCount(), 0);
+    }), 2000);
+  }
+]);
+
+testAsyncMulti('flash-messages - Override global config', [
+  function(test, expect) {
+    cleanMessages();
+    var options = _.clone(FlashMessages.options);
+    FlashMessages.configure({ autoHide: false, hideDelay: 8000 });
+    FlashMessages.sendError('message', { autoHide: true, hideDelay: 1000 });
+    FlashMessages.options = options
+
+    OnscreenDiv(Spark.render(Template.flashMessages));
+    Meteor.setTimeout(expect(function(){
+      test.equal(messagesCount(), 1);
+    }), 500);
+    Meteor.setTimeout(expect(function(){
+      test.equal(messagesCount(), 0);
+    }), 2000);
+  }
+]);
