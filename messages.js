@@ -11,7 +11,7 @@ FlashMessages = {
     flashMessages.insert({message: message, style: '', seen: false});
   },
   sendError: function(message) {
-    flashMessages.insert({message: message, style: 'alert-error', seen: false});
+    flashMessages.insert({message: message, style: 'alert-error alert-danger', seen: false});
   },
   sendSuccess: function(message) {
     flashMessages.insert({message: message, style: 'alert-success', seen: false});
