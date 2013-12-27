@@ -38,7 +38,7 @@ for situations where multiple flash message areas are desired. This may be the c
 when constructing packages with their own views containing flash messages.
 
 The following configuration may be improved via the up and coming `meteor-ui` project, but for now,
-based on `meteor` circa <b>0.7.x</b> the following may be used:
+based on `meteor` circa `0.7.x` the following may be used:
 
 Include the template somewhere in your index.html file:
 ```javascript
@@ -104,7 +104,7 @@ You can also set `autoHide`, `hideDelay` and `id` options on messages. This will
 ###CSS Configuration for a fade transition
 
 You can use the following CSS snippet to configure a fade effect based on the default styling depicted above which depends
-on the bootstrap `fade` and `in` classes:
+on the Bootstrap `fade` and `in` classes:
 
 The value of `transitionWait` should be greater than or equal to the `transition` duration specified here:
 
