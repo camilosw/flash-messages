@@ -37,6 +37,9 @@ The default usage should be sufficient for most use-cases, but it is possible to
 for situations where multiple flash message areas are desired. This may be the case with complex layouts or
 when constructing packages with their own views containing flash messages.
 
+The following configuration may be improved via the up and coming `meteor-ui` project, but for now,
+based on `meteor` circa <b>0.7.x</b> the following may be used:
+
 Include the template somewhere in your index.html file:
 ```javascript
   {{> flashMessages myFlashIdHelper}}
