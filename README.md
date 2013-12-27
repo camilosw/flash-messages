@@ -91,7 +91,7 @@ set to `false` to require the user to click the message to dismiss it.
 - `successClasses`: classes to be used with `success` styling
 - `infoClasses`: classes to be used with `info` styling
 - `buttonClasses`: classes to be used when `autoHide` is set to `false` and flash message has a dismiss button
-- `transitionWait`: number of milliseconds to allow for the CSS transition (defaults to `fade`) to complete
+- `transitionWait`: number of milliseconds to allow for the transition(s) activated by removing the `activeClass`
 
 You can also set `autoHide`, `hideDelay` and `id` options on messages. This will override global configuration:
 ```javascript
@@ -103,8 +103,10 @@ You can also set `autoHide`, `hideDelay` and `id` options on messages. This will
 
 ###CSS Configuration for a fade transition
 
-You can use the following CSS snippet to effect a fade transition. The value of `transitionWait` should be greater than or equal to
-the transition duration specified here:
+You can use the following CSS snippet to configure a fade effect based on the default styling depicted above which depends
+on the bootstrap `fade` and `in` classes:
+
+The value of `transitionWait` should be greater than or equal to the `transition` duration specified here:
 
 ```
 .fade {
