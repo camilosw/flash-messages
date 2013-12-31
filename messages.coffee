@@ -4,16 +4,16 @@ sendMessage = (message, type, options) ->
   #console.log 'send-message: msg=%s, type=%s, options=%o, defaults=%o', message, type, options, defaults
   options = _.defaults options || {}, FlashMessages.options
   msgOptions = _.pick options, ['autoHide', 'hideDelay', 'id']
-  console.log "send-message: msg-options=%o", msgOptions
+  #console.log "send-message: msg-options=%o", msgOptions
   flashMessages.insert
     message: message
-    style: options[type + 'Classes']
+    style: "#{options.alertClass} #{options[type + 'Classes']} #{options.transitionClass}"
     seen: false
     options: msgOptions
 
 FlashMessages =
-  sendAlert: (message, options) ->
-    sendMessage message, 'alert', options
+  sendWarning: (message, options) ->
+    sendMessage message, 'warning', options
 
   sendError: (message, options) ->
     sendMessage message, 'error', options
@@ -35,9 +35,11 @@ FlashMessages =
     autoHide: true
     hideDelay: 5000
     activeClass: 'in'
-    alertClasses: 'alert fade'
-    errorClasses: 'alert alert-error alert-danger fade'
-    successClasses: 'alert alert-success fade'
-    infoClasses: 'alert alert-info fade'
+    alertClass: 'alert'
+    transitionClass: 'fade'
+    warningClasses: 'alert-warning'
+    errorClasses: 'alert-error alert-danger'
+    successClasses: 'alert-success'
+    infoClasses: 'alert-info'
     buttonClasses: 'close'
     transitionWait: 2000

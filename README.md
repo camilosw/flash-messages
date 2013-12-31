@@ -10,7 +10,10 @@ This package is a convergence of multiple influences:
 * the [original package from which this was forked](https://github.com/camilosw/flash-messages)
 * this [excellent flash package for Angular-JS](https://github.com/wmluke/angular-flash)
 
-This package integrate well with [Bootstrap Alerts](http://twitter.github.io/bootstrap/components.html#alerts) styles, but Bootstrap is not a dependency.
+The default configuration for this package is designed for integration with [Bootstrap Alerts](http://twitter.github.io/bootstrap/components.html#alerts) CSS styles,
+so you will need to include Bootstrap for out-of-the-box functionality.
+
+While it hasn't been explicitly tested, it should be possible to configure for integration with custom CSS or other CSS frameworks (e.g. [Foundation](http://foundation.zurb.com/)).
 
 You can see [a demo of the original package](http://flash-messages-demo.meteor.com/) and [a modified version of the source code to work with this package](https://github.com/tony-kerz/flash-messages-demo).
 
@@ -43,17 +46,31 @@ when constructing packages with their own views containing flash messages.
 The following configuration may be improved via the up and coming `meteor-ui` project, but for now,
 based on `meteor` circa `0.7.x` the following may be used:
 
-Include the template somewhere in your index.html file:
+You can include the provided template either directly in an HTML file or in another template like so:
 ```javascript
   {{> flashMessages myFlashIdHelper}}
 ```
 
-where `myFlashIdHelper` has been defined like so:
+where `myFlashIdHelper` is a function which returns an object with an `id` property.
+
+For use directly in HTML, this function must be registered via `Handlebars.registerHelper()` like so:
 
 ```
-Handlebars.registerHelper('myFlashIdHelper', function() {
-  return { id: 'myFlashId'};
-});
+Handlebars.registerHelper('myFlashIdHelper', function() { return {id: 'myFlashId'} });
+```
+
+For use in another template, this function can be defined as a template helper like so:
+
+```
+Template.myTemplate.myFlashIdHelper = function() { return {id: 'myFlashId'} }
+```
+
+or using the alternative, `helpers` syntax:
+
+```
+Template.myTemplate.helpers = {
+  myFlashIdHelper: function() { return {id: 'myFlashId'} },
+  //...
 ```
 
 And then send messages:
@@ -70,14 +87,16 @@ You can configure globally the way the messages behave with FlashMessages.config
 
 ```javascript
   FlashMessages.configure({
-    autoHide: true,
-    hideDelay: 5000,
-    activeClass: 'in',
-    alertClasses: 'alert fade',
-    errorClasses: 'alert alert-error alert-danger fade',
-    successClasses: 'alert alert-success fade',
-    infoClasses: 'alert alert-info fade',
-    buttonClasses: 'close',
+    autoHide: true
+    hideDelay: 5000
+    activeClass: 'in'
+    alertClass: 'alert'
+    transitionClass: 'fade'
+    successClasses: 'alert-success'
+    infoClasses: 'alert-info'
+    warningClasses: 'alert-warning'
+    errorClasses: 'alert-error alert-danger'
+    buttonClasses: 'close'
     transitionWait: 2000
   });
 ```
@@ -88,11 +107,13 @@ but the implementation isn't tied to any particular CSS framework.
 - `autoHide`: set to `true` to make flash message fade after `hideDelay` milliseconds,
 set to `false` to require the user to click the message to dismiss it.
 - `hideDelay`: set the desired number of milliseconds for the flash message to be displayed (when `autoHide` is `true`)
-- `activeClass`: class that will be automatically added and removed to effect the CSS transition
-- `alertClasses`: classes to be used with default alert styling
-- `errorClasses`: classes to be used with `error` styling
+- `activeClass`: class that will be automatically added and removed to effect the CSS transition (e.g. the Bootstrap `in` class)
+- `alertClass`: class common to all alert styling (e.g. the Bootstrap `alert` class)
+- `transitionClass`: class containing the transition to be activated via `activeClass` (e.g. the Bootstrap `fade` class)
 - `successClasses`: classes to be used with `success` styling
 - `infoClasses`: classes to be used with `info` styling
+- `warningClasses`: classes to be used with `warning` styling
+- `errorClasses`: classes to be used with `error` styling
 - `buttonClasses`: classes to be used when `autoHide` is set to `false` and flash message has a dismiss button
 - `transitionWait`: number of milliseconds to allow for the transition(s) activated by removing the `activeClass`
 

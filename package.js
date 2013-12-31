@@ -13,7 +13,7 @@ Package.on_use(function(api, where) {
 });
 
 Package.on_test(function(api) {
-  api.use('flash-messages', 'client');
+  api.use('flash-messages-plus', 'client');
   api.use(['tinytest', 'test-helpers'], 'client');
 
   api.add_files('messages_tests.js', 'client');

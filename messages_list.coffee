@@ -1,14 +1,8 @@
 Template.flashMessage.rendered = ->
-  console.log "flash-message.rendered: %o, FM.options=%o", this, FlashMessages.options
+  #console.log "flash-message.rendered: %o, FM.options=%o", this, FlashMessages.options
   message = @data
   activeClass = FlashMessages.options.activeClass
-  #$alert = $(@find ".#{activeClass}")
-  $alert = $(@find '.alert')
-  #console.log "$alert=%o", $alert
-  #id = message.options.id
-  #console.log "flash-rendered: id=%s", id
-  #if (not id) or (id and $alert.parent("div#foo").length)
-  #console.log "flash-rendered: processing id=%s", id
+  $alert = $(@find ".#{FlashMessages.options.alertClass}")
   Meteor.defer ->
     flashMessages.update message._id,
       $set:
@@ -27,7 +21,7 @@ Template.flashMessage.rendered = ->
 
 Template.flashMessages.helpers
   messages: ->
-    #console.log "messages: this.id=%o", this.id
+    #console.log "messages: this=%o", this
     id = this.id
     if id
       query = 'options.id': id
