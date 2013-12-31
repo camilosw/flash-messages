@@ -1,10 +1,10 @@
 {
-  "name": "flash-messages",
-  "description": "Package for displaying flash messages to the user.",
-  "homepage": "https://github.com/camilosw/flash-messages",
-  "author": "Camilo Mejia <camilosw@gmail.com>",
-  "version": "0.2.1",
-  "git": "https://github.com/camilosw/flash-messages.git",
+  "name": "flash-messages-plus",
+  "description": "displays cool fading flash messages with support for multiple named flash message areas.",
+  "homepage": "https://github.com/tony-kerz/flash-messages",
+  "author": "tony kerz <anthony.kerz@gmail.com>",
+  "version": "1.0.2",
+  "git": "https://github.com/tony-kerz/flash-messages.git",
   "packages": {
   }
 }
