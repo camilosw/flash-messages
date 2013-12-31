@@ -3,7 +3,7 @@
   "description": "displays cool fading flash messages with support for multiple named flash message areas.",
   "homepage": "https://github.com/tony-kerz/flash-messages",
   "author": "tony kerz <anthony.kerz@gmail.com>",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "git": "https://github.com/tony-kerz/flash-messages.git",
   "packages": {
   }
