@@ -1,15 +1,18 @@
-flash-messages
-==============
+flash-messages-plus
+===================
 
-Package for displaying flash messages to the user. This is based on the chapter 'Creating a Meteorite Package' from the [Discover Meteor Book](http://www.discovermeteor.com/) and [foundation-flash-messages](https://github.com/datariot/foundation-flash-messages) package.
+Package for displaying flash messages to the user.
+
+This package is a convergence of multiple influences:
+
+* the chapter 'Creating a Meteorite Package' from the [Discover Meteor Book](http://www.discovermeteor.com/)
+* [foundation-flash-messages](https://github.com/datariot/foundation-flash-messages)
+* the [original package from which this was forked](https://github.com/camilosw/flash-messages)
+* this [excellent flash package for Angular-JS](https://github.com/wmluke/angular-flash)
 
 This package integrate well with [Bootstrap Alerts](http://twitter.github.io/bootstrap/components.html#alerts) styles, but Bootstrap is not a dependency.
 
-You can see a [demo](http://flash-messages-demo.meteor.com/) and their [source code](https://github.com/camilosw/flash-messages-demo).
-
-##Note
-
-The syntax has changed on version 0.2.0
+You can see [a demo of the original package](http://flash-messages-demo.meteor.com/) and [a modified version of the source code to work with this package](https://github.com/tony-kerz/flash-messages-demo).
 
 ##Default Usage
 
