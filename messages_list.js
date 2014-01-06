@@ -4,9 +4,13 @@ Template.flashMessage.rendered = function () {
     flashMessages.update(message._id, {$set: {seen: true}});
   });
   if (message.options && message.options.autoHide) {
-    $(this.find('.alert')).delay(message.options.hideDelay).fadeOut(400, function(){
-      flashMessages.remove({_id: message._id});
-    });    
+    $alert = $(this.find('.alert'));
+    Meteor.setTimeout(function() {
+        $alert.fadeOut(400, function() {
+          flashMessages.remove({_id: message._id});
+        });    
+      }, 
+      message.options.hideDelay);
   }
 };
 

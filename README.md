@@ -36,17 +36,23 @@ Only the seen messages will be cleared.
 
 ##Configure
 
-You can configure globally the way the messages behave with FlashMessages.configure:
+You can configure globally the way the messages behave with FlashMessages.configure (the below sample shows the default values):
 ```javascript
   FlashMessages.configure({
     autoHide: true,
     hideDelay: 5000
   });
 ```
+
+**Note:** The above code sample shows default values. The default CSS related options correspond to Bootstrap classes,
+but the implementation isn't tied to any particular CSS framework.
+
+- `autoHide`: set to `true` to make flash message fade after `hideDelay` milliseconds, set to `false` to require the user to click the close button on the message to dismiss it.
+- `hideDelay`: set the desired number of milliseconds for the flash message to be displayed (when `autoHide` is `true`).
+
 You can also set individual options on messages. This will override global configuration:
 ```javascript
   FlashMessages.sendWarning(MESSAGE, { autoHide: false });
   FlashMessages.sendError(MESSAGE, { hideDelay: 2000 });
   FlashMessages.sendSuccess(MESSAGE, { autoHide: true, hideDelay: 8000 });
-  FlashMessages.sendInfo(MESSAGE);
 ```
