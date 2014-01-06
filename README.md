@@ -19,11 +19,14 @@ Include the template somewhere in your index.html file:
 ```
 And then send messages:
 ```javascript
-  FlashMessages.sendAlert(MESSAGE);
+  FlashMessages.sendWarning(MESSAGE);
   FlashMessages.sendError(MESSAGE);
   FlashMessages.sendSuccess(MESSAGE);
   FlashMessages.sendInfo(MESSAGE);
 ```
+
+**Note:** sendAlert was deprecated, use sendWarning instead.
+
 To clear messages:
 ```javascript
   FlashMessages.clear();
@@ -42,7 +45,7 @@ You can configure globally the way the messages behave with FlashMessages.config
 ```
 You can also set individual options on messages. This will override global configuration:
 ```javascript
-  FlashMessages.sendAlert(MESSAGE, { autoHide: false });
+  FlashMessages.sendWarning(MESSAGE, { autoHide: false });
   FlashMessages.sendError(MESSAGE, { hideDelay: 2000 });
   FlashMessages.sendSuccess(MESSAGE, { autoHide: true, hideDelay: 8000 });
   FlashMessages.sendInfo(MESSAGE);
