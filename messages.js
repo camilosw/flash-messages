@@ -28,7 +28,8 @@ FlashMessages = {
   },
   options: {
     autoHide: true,
-    hideDelay: 5000
+    hideDelay: 5000,
+    scroll: true
   }
 }
 
