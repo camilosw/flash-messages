@@ -16,7 +16,7 @@ Template.flashMessage.rendered = function () {
 
 Template.flashMessages.helpers({
   messages: function () {
-    if (flashMessages.find().count() && FlashMessages.options.scroll)
+    if (flashMessages.find().count() && FlashMessages.options.autoScroll)
       $('html, body').animate({
         scrollTop: 0
       }, 200);
