@@ -7,8 +7,13 @@
 flashMessages = new Meteor.Collection(null);
 
 FlashMessages = {
+  // Deprecated, use sendWarning instead. sendWarning is more consistent with Boostrap classes.
   sendAlert: function(message, options) {
     sendMessage(message, '', options);
+    console.log('Deprecated, use sendWarning instead of sendAlert');
+  },
+  sendWarning: function(message, options) {
+    sendMessage(message, 'alert-warning', options);
   },
   sendError: function(message, options) {
     sendMessage(message, 'alert-error alert-danger', options);
@@ -28,7 +33,8 @@ FlashMessages = {
   },
   options: {
     autoHide: true,
-    hideDelay: 5000
+    hideDelay: 5000,
+    autoScroll: true
   }
 }
 

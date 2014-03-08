@@ -3,8 +3,7 @@
   "description": "Package for displaying flash messages to the user.",
   "homepage": "https://github.com/camilosw/flash-messages",
   "author": "Camilo Mejia <camilosw@gmail.com>",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "git": "https://github.com/camilosw/flash-messages.git",
-  "packages": {
-  }
+  "packages": {}
 }

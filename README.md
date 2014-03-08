@@ -19,11 +19,14 @@ Include the template somewhere in your index.html file:
 ```
 And then send messages:
 ```javascript
-  FlashMessages.sendAlert(MESSAGE);
+  FlashMessages.sendWarning(MESSAGE);
   FlashMessages.sendError(MESSAGE);
   FlashMessages.sendSuccess(MESSAGE);
   FlashMessages.sendInfo(MESSAGE);
 ```
+
+**Note:** sendAlert was deprecated, use sendWarning instead.
+
 To clear messages:
 ```javascript
   FlashMessages.clear();
@@ -33,17 +36,22 @@ Only the seen messages will be cleared.
 
 ##Configure
 
-You can configure globally the way the messages behave with FlashMessages.configure:
+You can configure globally the way the messages behave with FlashMessages.configure (the below sample shows the default values):
 ```javascript
   FlashMessages.configure({
     autoHide: true,
-    hideDelay: 5000
+    hideDelay: 5000,
+    autoScroll: true
   });
 ```
+
+- `autoHide`: set to `true` to make flash message fade after `hideDelay` milliseconds, set to `false` to require the user to click the close button on the message to dismiss it.
+- `hideDelay`: set the desired number of milliseconds for the flash message to be displayed (when `autoHide` is `true`).
+- `autoScroll`: set to `true` to enable auto scroll when a message is displayed, `false` to disable auto scroll. (**Note:** this can be set only globally.)
+
 You can also set individual options on messages. This will override global configuration:
 ```javascript
-  FlashMessages.sendAlert(MESSAGE, { autoHide: false });
+  FlashMessages.sendWarning(MESSAGE, { autoHide: false });
   FlashMessages.sendError(MESSAGE, { hideDelay: 2000 });
   FlashMessages.sendSuccess(MESSAGE, { autoHide: true, hideDelay: 8000 });
-  FlashMessages.sendInfo(MESSAGE);
 ```

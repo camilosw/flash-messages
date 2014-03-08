@@ -18,17 +18,17 @@ Tinytest.add('flash-messages - Messages Collection works', function(test) {
   test.equal(messagesCount(), 0);
 });
 
-Tinytest.add('flash-messages - Add alert message', function(test) {
+Tinytest.add('flash-messages - Add warning message', function(test) {
   cleanMessages();
-  var message = 'This is an alert message';
-  FlashMessages.sendAlert(message);
+  var message = 'This is a warning message';
+  FlashMessages.sendWarning(message);
 
   test.equal(messagesCount(), 1);
 
   test.equal(findOneMessage().message, message, 
-    'Alert messages should be ' + message);
+    'Warning messages should be ' + message);
 
-  test.equal(findOneMessage().style, '', 'Style should be empty');
+  test.equal(findOneMessage().style, 'alert-warning', 'Style should be alert-warning');
 
   test.equal(findOneMessage().seen, false, 'Seen should be false');
 });
@@ -43,7 +43,7 @@ Tinytest.add('flash-messages - Add error message', function(test) {
   test.equal(findOneMessage().message, message, 
     'Error messages should be ' + message);
 
-  test.equal(findOneMessage().style, 'alert-error', 
+  test.equal(findOneMessage().style, 'alert-error alert-danger', 
     'Style should be alert-error');
 
   test.equal(findOneMessage().seen, false, 'Seen should be false');
