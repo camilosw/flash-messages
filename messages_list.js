@@ -20,7 +20,11 @@ Template.flashMessages.helpers({
       $('html, body').animate({
         scrollTop: 0
       }, 200);
-    return flashMessages.find();
+    var messages = flashMessages.find().fetch();
+    $.each(messages, function(index, value) {
+      value.group = value.message instanceof Array;
+    });
+    return messages;
   }
 });
 

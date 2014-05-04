@@ -79,6 +79,14 @@ Tinytest.add('flash-messages - Add info message', function(test) {
   test.equal(findOneMessage().seen, false, 'Seen should be false');
 });
 
+Tinytest.add('flash-messages - Add messages grouped', function(test) {
+  cleanMessages();
+  var messages = ['Message 1', 'Message 2', 'Message 3'];
+  FlashMessages.sendInfo(messages);
+
+  test.equal(messagesCount(), 1);
+});
+
 Tinytest.add("flash-messages - Don't remove unseen messages", function(test) {
   cleanMessages();
   FlashMessages.sendError('message');
