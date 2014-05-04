@@ -7,6 +7,14 @@
 <template name="flashMessage">
   <div class="alert {{style}} alert-dismissable">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    {{message}}
+    {{# if group }}
+      <ul>
+        {{#each message}}
+          <li>{{{this}}}</li>
+        {{/each}}
+      </ul>
+    {{ else }}
+      {{{message}}}
+    {{/ if }}
   </div> 
 </template>

@@ -79,6 +79,14 @@ Tinytest.add('flash-messages - Add info message', function(test) {
   test.equal(findOneMessage().seen, false, 'Seen should be false');
 });
 
+Tinytest.add('flash-messages - Add messages grouped', function(test) {
+  cleanMessages();
+  var messages = ['Message 1', 'Message 2', 'Message 3'];
+  FlashMessages.sendInfo(messages);
+
+  test.equal(messagesCount(), 1);
+});
+
 Tinytest.add("flash-messages - Don't remove unseen messages", function(test) {
   cleanMessages();
   FlashMessages.sendError('message');
@@ -91,7 +99,7 @@ testAsyncMulti('flash-messages - Remove seen messages', [
     cleanMessages();
     FlashMessages.sendError('message');
 
-    OnscreenDiv(Spark.render(Template.flashMessages));
+    UI.insert(UI.render(Template.flashMessages), document.body);
     Meteor.setTimeout(expect(function(){
       test.equal(messagesCount(), 1);
       test.equal(flashMessages.find({seen: false}).count(), 0, 
@@ -108,7 +116,7 @@ testAsyncMulti('flash-messages - Remove when click close button', [
     cleanMessages();
     FlashMessages.sendError('message');
 
-    OnscreenDiv(Spark.render(Template.flashMessages));
+    UI.insert(UI.render(Template.flashMessages), document.body);
     Meteor.setTimeout(expect(function(){
       test.equal(messagesCount(), 1);
       clickElement(document.getElementsByClassName('close')[0]);
@@ -122,7 +130,7 @@ testAsyncMulti('flash-messages - Remove after 5 seconds', [
     cleanMessages();
     FlashMessages.sendError('message');
 
-    OnscreenDiv(Spark.render(Template.flashMessages));
+    UI.insert(UI.render(Template.flashMessages), document.body);
     Meteor.setTimeout(expect(function(){
       test.equal(messagesCount(), 1);
     }), 500);
@@ -137,7 +145,7 @@ testAsyncMulti("flash-messages - Don't remove if autoHide is false", [
     cleanMessages();
     FlashMessages.sendError('message', { autoHide: false });
 
-    OnscreenDiv(Spark.render(Template.flashMessages));
+    UI.insert(UI.render(Template.flashMessages), document.body);
     Meteor.setTimeout(expect(function(){
       test.equal(messagesCount(), 1);
     }), 500);
@@ -155,7 +163,7 @@ testAsyncMulti("flash-messages - Don't remove with global config", [
     FlashMessages.sendError('message');
     FlashMessages.options = options
 
-    OnscreenDiv(Spark.render(Template.flashMessages));
+    UI.insert(UI.render(Template.flashMessages), document.body);
     Meteor.setTimeout(expect(function(){
       test.equal(messagesCount(), 1);
     }), 500);
@@ -170,7 +178,7 @@ testAsyncMulti('flash-messages - Set auto hide delay to 1 second', [
     cleanMessages();
     FlashMessages.sendError('message', { hideDelay: 1000 });
 
-    OnscreenDiv(Spark.render(Template.flashMessages));
+    UI.insert(UI.render(Template.flashMessages), document.body);
     Meteor.setTimeout(expect(function(){
       test.equal(messagesCount(), 1);
     }), 500);
@@ -188,7 +196,7 @@ testAsyncMulti('flash-messages - Set auto hide delay to 1 second with global con
     FlashMessages.sendError('message');
     FlashMessages.options = options
 
-    OnscreenDiv(Spark.render(Template.flashMessages));
+    UI.insert(UI.render(Template.flashMessages), document.body);
     Meteor.setTimeout(expect(function(){
       test.equal(messagesCount(), 1);
     }), 500);
@@ -206,7 +214,7 @@ testAsyncMulti('flash-messages - Override global config', [
     FlashMessages.sendError('message', { autoHide: true, hideDelay: 1000 });
     FlashMessages.options = options
 
-    OnscreenDiv(Spark.render(Template.flashMessages));
+    UI.insert(UI.render(Template.flashMessages), document.body);
     Meteor.setTimeout(expect(function(){
       test.equal(messagesCount(), 1);
     }), 500);
