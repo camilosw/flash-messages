@@ -27,12 +27,12 @@ And then send messages:
 
 **Note:** sendAlert was deprecated, use sendWarning instead.
 
-You can also send a group of messages sending an array of strings. This will be rendered on a ul li list.
+You can also send a group of messages sending an array of strings. This will be rendered on a ul li list:
 ```javascript
   FlashMessages.sendInfo(["Message 1", "Message 2", "Message 3"]);
 ```
 
-Messages can also contain html
+Messages can also contain html:
 ```javascript
   FlashMessages.sendInfo("You can found <strong>Meteor</strong> <a href='http://meteor.com'>here</a>");
 ```
