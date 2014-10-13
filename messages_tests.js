@@ -114,7 +114,7 @@ testAsyncMulti('flash-messages - Remove seen messages', [
 testAsyncMulti('flash-messages - Remove when click close button', [
   function(test, expect) {
     cleanMessages();
-    FlashMessages.sendError('message');
+    FlashMessages.sendError('message', {showCloseButton: true});
 
     UI.insert(UI.render(Template.flashMessages), document.body);
     Meteor.setTimeout(expect(function(){
