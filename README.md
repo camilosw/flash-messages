@@ -9,7 +9,7 @@ You can see a [demo](http://flash-messages-demo.meteor.com/) and their [source c
 
 ##Note
 
-The syntax has changed on version 0.2.0
+This flash message is based on this [repo](https://github.com/camilosw/flash-messages.git). I added an option for close button. See below.
 
 ##Usage
 
@@ -64,4 +64,5 @@ You can also set individual options on messages. This will override global confi
   FlashMessages.sendWarning("Message", { autoHide: false });
   FlashMessages.sendError("Message", { hideDelay: 2000 });
   FlashMessages.sendSuccess("Message", { autoHide: true, hideDelay: 8000 });
+  FlashMessages.sendInfor("Message", {showCloseButton: true}); // by default this is false
 ```

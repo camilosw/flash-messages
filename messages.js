@@ -34,7 +34,8 @@ FlashMessages = {
   options: {
     autoHide: true,
     hideDelay: 5000,
-    autoScroll: true
+    autoScroll: true,
+    showCloseButton: false
   }
 }
 
@@ -42,5 +43,6 @@ sendMessage = function(message, style, options) {
   options = options || {};
   options.autoHide = options.autoHide === undefined ? FlashMessages.options.autoHide : options.autoHide;
   options.hideDelay = options.hideDelay || FlashMessages.options.hideDelay;
+  options.showCloseButton = options.showCloseButton === undefined ? FlashMessages.options.showCloseButton : options.showCloseButton;
   flashMessages.insert({ message: message, style: style, seen: false, options: options});  
 }
