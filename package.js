@@ -13,7 +13,7 @@ Package.on_use(function(api, where) {
   api.add_files(['messages.js', 'messages_list.html', 'messages_list.js'], 'client');
 
   if (typeof api.export !== 'undefined') {
-    api.export(['Flash', 'flash'], 'client');
+    api.export(['FlashMessages', 'flashMessages'], 'client');
   }
 });
 
