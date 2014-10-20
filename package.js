@@ -1,5 +1,8 @@
 Package.describe({
-  summary: "A package to display flash messages to the user."
+  name: "kmligue:flash-messages",
+  summary: "A package to display flash messages to the user.",
+  version: "1.0",
+  git: "https://github.com/kmligue/flash-messages.git"
 });
 
 Package.on_use(function(api, where) {
