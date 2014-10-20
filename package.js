@@ -6,7 +6,7 @@ Package.describe({
 });
 
 Package.on_use(function(api, where) {
-  api.use(['minimongo': '1.0.3', 'mongo-livedata': '1.0.5', 'templating': '1.0.7'], 'client');
+  api.use(['minimongo', 'mongo-livedata', 'templating'], 'client');
 
   api.add_files(['messages.js', 'messages_list.html', 'messages_list.js'], 'client');
 
