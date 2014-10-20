@@ -1,7 +1,7 @@
 Package.describe({
   name: "kmligue:flash-messages",
   summary: "A package to display flash messages to the user.",
-  version: "1.0",
+  version: "1.0.0",
   git: "https://github.com/kmligue/flash-messages.git"
 });
 
