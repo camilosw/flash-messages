@@ -6,6 +6,8 @@ Package.describe({
 });
 
 Package.on_use(function(api, where) {
+  api.versionsFrom("METEOR@0.9.0");
+  
   api.use(['minimongo', 'mongo-livedata', 'templating'], 'client');
 
   api.add_files(['messages.js', 'messages_list.html', 'messages_list.js'], 'client');
