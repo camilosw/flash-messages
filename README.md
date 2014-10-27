@@ -1,17 +1,17 @@
 flash-messages
 ==============
 
-Package for displaying flash messages to the user. This is based on the chapter 'Creating a Meteorite Package' from the [Discover Meteor Book](http://www.discovermeteor.com/) and [foundation-flash-messages](https://github.com/datariot/foundation-flash-messages) package.
+Package for displaying flash messages to the user. This is based on the chapter 'Creating a Meteorite Package' from the [Discover Meteor Book](http://www.discovermeteor.com/) and the [foundation-flash-messages](https://github.com/datariot/foundation-flash-messages) package.
 
-This package integrate well with [Bootstrap Alerts](http://getbootstrap.com/components/#alerts) styles, but Bootstrap is not a dependency.
+This package integrates well with [Bootstrap Alerts](http://getbootstrap.com/components/#alerts) styles, but Bootstrap is not a dependency.
 
 You can see a [demo](http://flash-messages-demo.meteor.com/) and their [source code](https://github.com/camilosw/flash-messages-demo).
 
-##Note
+## Note
 
 The syntax has changed on version 0.2.0
 
-##Usage
+## Usage
 
 Include the template somewhere in your index.html file:
 ```javascript
@@ -27,7 +27,7 @@ And then send messages:
 
 **Note:** sendAlert was deprecated, use sendWarning instead.
 
-You can also send a group of messages sending an array of strings. This will be rendered on a ul li list:
+You can also send a group of messages sending an array of strings. This will be rendered on a `ul` `li` list:
 ```javascript
   FlashMessages.sendInfo(["Message 1", "Message 2", "Message 3"]);
 ```
