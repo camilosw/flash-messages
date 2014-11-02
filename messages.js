@@ -1,10 +1,10 @@
 /**
- * messages 
+ * flashMessages 
  * { message: String,
  *   style: String,
  *   seen: Boolean }
  */
-flashMessages = new Meteor.Collection(null);
+flashMessages = new Mongo.Collection(null);
 
 FlashMessages = {
   // Deprecated, use sendWarning instead. sendWarning is more consistent with Boostrap classes.
