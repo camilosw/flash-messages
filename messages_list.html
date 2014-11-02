@@ -1,11 +1,11 @@
 <template name="flashMessages">
   {{#each messages}} 
-    {{> flashMessage}}
+    {{> flashMessageItem}}
   {{/each}}
 </template>
 
-<template name="flashMessage">
-  <div class="alert {{style}} alert-dismissable">
+<template name="flashMessageItem">
+  <div class="alert {{style}} alert-dismissable" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     {{# if group }}
       <ul>
