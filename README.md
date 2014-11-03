@@ -1,5 +1,6 @@
-flash-messages
+flash-messages [![Build Status](https://travis-ci.org/camilosw/flash-messages.svg)](https://travis-ci.org/camilosw/flash-messages)
 ==============
+
 
 Package for displaying flash messages to the user. This is based on the chapter 'Creating a Meteorite Package' from the [Discover Meteor Book](http://www.discovermeteor.com/) and the [foundation-flash-messages](https://github.com/datariot/foundation-flash-messages) package.
 
