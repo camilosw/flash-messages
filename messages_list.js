@@ -18,7 +18,7 @@ Template.flashMessageItem.rendered = function () {
     flashMessages.update(message._id, {$set: {seen: true}});
   });
   if (message.options && message.options.autoHide) {
-    $alert = $(this.find('.alert'));
+    var $alert = $(this.find('.alert'));
     Meteor.setTimeout(function() {
         $alert.fadeOut(400, function() {
           flashMessages.remove({_id: message._id});
