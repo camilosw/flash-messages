@@ -45,7 +45,7 @@ To clear messages:
 
 Only the seen messages will be cleared.
 
-##Configure
+## Configure
 
 You can configure globally the way the messages behave with FlashMessages.configure (the below sample shows the default values):
 ```javascript
